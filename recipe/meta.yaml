@@ -1,25 +1,28 @@
+{% set name = "geopy" %}
 {% set version = "2.3.0" %}
 
 package:
-  name: geopy
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/geopy/geopy/archive/{{ version }}.tar.gz
-  sha256: 51745ba5497306ce26e71b794bef6052b17eb8dcc517d27e1aa030ac93863e1a
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 228cd53b6eef699b2289d1172e462a90d5057779a10388a7366291812601187f
 
 build:
+  skip: true  # [py<37]
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
 
 requirements:
   host:
-    - python >=3.5
+    - python
     - pip
+    - setuptools
+    - wheel
   run:
-    - python >=3.5
-    - geographiclib <2,>=1.49
+    - python
+    - geographiclib >=1.52,<3 
 
 test:
   imports:
@@ -34,8 +37,18 @@ test:
 about:
   home: https://github.com/geopy/geopy
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: Python Geocoding Toolbox.
+  description: |
+    geopy is a Python client for several popular geocoding web services.
+    geopy makes it easy for Python developers to locate the coordinates of addresses, 
+    cities, countries, and landmarks across the globe using third-party geocoders and 
+    other data sources. geopy includes geocoder classes for the OpenStreetMap Nominatim, 
+    Google Geocoding API (V3), and many other geocoding services. The full list is available 
+    on the Geocoders doc section. Geocoder classes are located in geopy.geocoders.
+  doc_url: https://geopy.readthedocs.io/en/latest/
+  dev_url: https://github.com/geopy/geopy
 
 extra:
   recipe-maintainers:
