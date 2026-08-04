@@ -1,13 +1,13 @@
 {% set name = "geopy" %}
-{% set version = "2.4.1" %}
+{% set version = "2.5.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 50283d8e7ad07d89be5cb027338c6365a32044df3ae2556ad3f52f4840b3d0d1
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 7b6c849f18108dcce4faa3d614e2801107b465f7b05fd3c1db9db12e225ae950
 
 build:
   skip: true  # [py<37]
