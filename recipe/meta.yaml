@@ -1,16 +1,16 @@
 {% set name = "geopy" %}
-{% set version = "2.4.1" %}
+{% set version = "2.5.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 50283d8e7ad07d89be5cb027338c6365a32044df3ae2556ad3f52f4840b3d0d1
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 7b6c849f18108dcce4faa3d614e2801107b465f7b05fd3c1db9db12e225ae950
 
 build:
-  skip: true  # [py<37]
+  skip: true  # [py<38]
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
 
@@ -54,7 +54,7 @@ about:
     other data sources. geopy includes geocoder classes for the OpenStreetMap Nominatim,
     Google Geocoding API (V3), and many other geocoding services. The full list is available
     on the Geocoders doc section. Geocoder classes are located in geopy.geocoders.
-  doc_url: https://geopy.readthedocs.io/en/latest/
+  doc_url: https://geopy.readthedocs.io
   dev_url: https://github.com/geopy/geopy
 
 extra:
